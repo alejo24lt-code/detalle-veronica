@@ -1,0 +1,9 @@
+{
+    "name": "Flores Amarillas",
+    "short_name": "Flores 💛",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#f6d85f",
+    "theme_color": "#f4c542",
+    "description": "Una pequeña sorpresa de flores amarillas"
+}

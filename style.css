@@ -1,0 +1,218 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(circle at top, #fff8cf, #f6d85f 45%, #8fa83b);
+
+    overflow: hidden;
+}
+
+.card {
+    width: 90%;
+    max-width: 420px;
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.90);
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.20);
+
+    backdrop-filter: blur(8px);
+
+    position: relative;
+    z-index: 2;
+}
+
+.flower-main {
+    font-size: 80px;
+
+    animation:
+        floatFlower 3s ease-in-out infinite;
+}
+
+h1 {
+    margin: 10px 0;
+
+    color: #8c6a00;
+
+    font-size: 32px;
+}
+
+.subtitle {
+    color: #655d42;
+
+    font-size: 16px;
+
+    line-height: 1.5;
+
+    margin-bottom: 25px;
+}
+
+button {
+    border: none;
+
+    padding: 14px 25px;
+
+    border-radius: 30px;
+
+    background: #f2c300;
+
+    color: #fff;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(181, 145, 0, 0.30);
+
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.message {
+    display: none;
+
+    margin-top: 25px;
+
+    padding: 20px;
+
+    background: #fff9dc;
+
+    border-radius: 20px;
+
+    animation: appear 0.8s ease;
+}
+
+.message h2 {
+    color: #8c6a00;
+}
+
+.message p {
+    color: #5f573d;
+
+    line-height: 1.6;
+}
+
+.small-flowers {
+    font-size: 25px;
+}
+
+.flowers span {
+    position: absolute;
+
+    font-size: 28px;
+
+    animation: fall linear infinite;
+
+    z-index: 1;
+}
+
+.flowers span:nth-child(1) {
+    left: 10%;
+    animation-duration: 8s;
+    animation-delay: 0s;
+}
+
+.flowers span:nth-child(2) {
+    left: 25%;
+    animation-duration: 10s;
+    animation-delay: 2s;
+}
+
+.flowers span:nth-child(3) {
+    left: 40%;
+    animation-duration: 7s;
+    animation-delay: 1s;
+}
+
+.flowers span:nth-child(4) {
+    left: 55%;
+    animation-duration: 11s;
+    animation-delay: 3s;
+}
+
+.flowers span:nth-child(5) {
+    left: 70%;
+    animation-duration: 9s;
+    animation-delay: 1s;
+}
+
+.flowers span:nth-child(6) {
+    left: 82%;
+    animation-duration: 12s;
+    animation-delay: 4s;
+}
+
+.flowers span:nth-child(7) {
+    left: 93%;
+    animation-duration: 8s;
+    animation-delay: 2s;
+}
+
+@keyframes fall {
+
+    0% {
+        top: -50px;
+        transform: rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 110vh;
+        transform: rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes floatFlower {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes appear {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
