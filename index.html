@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -1130,8 +1131,10 @@ body{
 
 }
 
+
 /* =========================================================
-   TABLET
+   RESPONSIVE
+   SOLO PARA ADAPTAR EL RAMO Y LA CARTA
 ========================================================= */
 
 @media(max-width:950px){
@@ -1143,61 +1146,52 @@ body{
 
     .scene{
 
-        width:100%;
-
         flex-direction:column;
+
+        align-items:center;
+        justify-content:flex-start;
 
         gap:0;
 
         padding:
-            30px
-            15px
-            50px;
+            20px
+            0
+            40px;
 
     }
 
     .bouquet{
 
         /*
-         * El ramo sigue conservando
-         * sus proporciones originales.
+         * El ramo conserva su diseño original.
+         * JavaScript se encarga de reducirlo.
          */
         width:540px;
         height:690px;
 
-        /*
-         * El tamaño se calcula según
-         * el ancho disponible.
-         */
+        flex-shrink:0;
+
         transform:
-            scale(
-                min(
-                    .82,
-                    calc((100vw - 30px) / 540)
-                )
-            );
+            scale(var(--ramo-scale, .7));
 
         transform-origin:
             center top;
 
+        /*
+         * Este margen se actualiza también
+         * desde JavaScript.
+         */
         margin-bottom:
-            calc(
-                -210px
-                * min(
-                    1,
-                    calc((540px - 100vw + 30px) / 540)
-                )
-            );
+            var(--ramo-margin, -200px);
 
     }
 
     .letter{
 
         width:
-            min(
-                500px,
-                calc(100vw - 30px)
-            );
+            calc(100vw - 24px);
+
+        max-width:500px;
 
         min-width:0;
 
@@ -1208,353 +1202,65 @@ body{
 
 }
 
-/* =========================================================
-   CELULAR
-========================================================= */
 
 @media(max-width:600px){
-
-    .intro-content{
-        padding:
-            20px 15px;
-    }
-
-    .small-title{
-
-        font-size:10px;
-
-        letter-spacing:4px;
-
-        margin-bottom:17px;
-
-    }
-
-    .intro h1{
-
-        font-size:
-            clamp(
-                38px,
-                12vw,
-                55px
-            );
-
-        letter-spacing:2px;
-
-    }
-
-    .intro p{
-
-        font-size:14px;
-
-        padding:0 10px;
-
-    }
-
-    .veronica{
-
-        margin-top:18px;
-
-        font-size:
-            clamp(
-                48px,
-                15vw,
-                68px
-            );
-
-    }
-
-    .start{
-
-        width:110px;
-        height:110px;
-
-        margin-top:30px;
-
-    }
-
-    /* =====================
-       RAMO RESPONSIVE
-    ===================== */
 
     .scene{
 
         padding:
-            25px
+            10px
             0
-            45px;
-
-        gap:0;
+            35px;
 
     }
-
-    .bouquet{
-
-        width:540px;
-        height:690px;
-
-        /*
-         * ESTA ES LA CLAVE:
-         *
-         * El ramo mide 540px internamente,
-         * pero su escala depende del ancho
-         * REAL del teléfono.
-         *
-         * 100vw = ancho del celular.
-         */
-        transform:
-            scale(
-                clamp(
-                    .52,
-                    calc((100vw - 10px) / 540),
-                    .72
-                )
-            );
-
-        transform-origin:
-            center top;
-
-        /*
-         * Compensamos el espacio que ocupa
-         * después de reducirlo.
-         */
-        margin-bottom:
-            calc(
-                -690px
-                +
-                (
-                    690px *
-                    clamp(
-                        .52,
-                        calc((100vw - 10px) / 540),
-                        .72
-                    )
-                )
-            );
-
-    }
-
-    /* =====================
-       CARTA
-    ===================== */
 
     .letter{
 
         width:
-            calc(100vw - 24px);
-
-        max-width:
-            500px;
-
-        min-width:0;
+            calc(100vw - 20px);
 
         padding:
-            38px
-            clamp(
-                20px,
-                7vw,
-                30px
-            )
-            32px;
-
-        margin:
-            0 auto 25px;
-
-        transform:
-            rotate(0deg);
-
-        animation:
-            letterFloatMobile
-            6s
-            ease-in-out
-            infinite;
-
-    }
-
-    @keyframes letterFloatMobile{
-
-        0%,100%{
-            transform:translateY(0);
-        }
-
-        50%{
-            transform:translateY(-4px);
-        }
-
-    }
-
-    .letter::before{
-        inset:8px;
-    }
-
-    .letter-top{
-
-        font-size:9px;
-
-        letter-spacing:3px;
-
-        margin-bottom:16px;
+            35px 28px;
 
     }
 
     .letter h2{
-
-        font-size:
-            clamp(
-                30px,
-                9vw,
-                38px
-            );
-
-        margin-bottom:10px;
-
+        font-size:34px;
     }
 
     .name-letter{
-
-        font-size:
-            clamp(
-                30px,
-                9vw,
-                36px
-            );
-
-        margin-bottom:22px;
-
+        font-size:32px;
     }
 
     .letter p{
-
-        font-size:
-            clamp(
-                14px,
-                4.2vw,
-                16px
-            );
-
-        line-height:1.75;
-
-    }
-
-    .signature{
-
-        margin-top:22px;
-
-        font-size:10px;
-
-        letter-spacing:3px;
-
-    }
-
-    .heart{
-
-        margin-top:23px;
-
-        font-size:30px;
-
-    }
-
-    /* PÉTALOS */
-
-    .petal-float{
-
-        width:7px;
-        height:11px;
-
+        font-size:15px;
     }
 
 }
 
-/* =========================================================
-   CELULARES PEQUEÑOS
-========================================================= */
 
 @media(max-width:380px){
-
-    .small-title{
-
-        font-size:9px;
-        letter-spacing:3px;
-
-    }
-
-    .intro h1{
-        font-size:36px;
-    }
-
-    .intro p{
-        font-size:13px;
-    }
-
-    .veronica{
-        font-size:46px;
-    }
-
-    .start{
-
-        width:100px;
-        height:100px;
-
-    }
-
-    .bouquet{
-
-        /*
-         * En teléfonos muy pequeños
-         * dejamos que el cálculo anterior
-         * sea quien mande.
-         */
-        transform:
-            scale(
-                clamp(
-                    .48,
-                    calc((100vw - 10px) / 540),
-                    .65
-                )
-            );
-
-    }
 
     .letter{
 
         width:
-            calc(100vw - 18px);
+            calc(100vw - 14px);
 
         padding:
-            34px
-            18px
-            28px;
+            30px 20px;
 
+    }
+
+    .letter h2{
+        font-size:30px;
+    }
+
+    .name-letter{
+        font-size:29px;
     }
 
     .letter p{
-
         font-size:14px;
-
-        line-height:1.7;
-
-    }
-
-}
-
-/* =========================================================
-   TELÉFONOS MUY BAJOS / HORIZONTAL
-========================================================= */
-
-@media(max-height:550px) and (orientation:landscape){
-
-    body{
-        overflow-y:auto;
-    }
-
-    .intro-content{
-        transform:scale(.8);
-    }
-
-    .scene{
-
-        padding:
-            20px;
-
     }
 
 }
@@ -1570,23 +1276,30 @@ body{
 <div class="shooting-star s2"></div>
 <div class="shooting-star s3"></div>
 
-<div class="petal-float"
-     style="left:8%;animation-delay:1s"></div>
 
 <div class="petal-float"
-     style="left:18%;animation-delay:5s"></div>
+     style="left:8%;animation-delay:1s">
+</div>
 
 <div class="petal-float"
-     style="left:35%;animation-delay:3s"></div>
+     style="left:18%;animation-delay:5s">
+</div>
 
 <div class="petal-float"
-     style="left:65%;animation-delay:7s"></div>
+     style="left:35%;animation-delay:3s">
+</div>
 
 <div class="petal-float"
-     style="left:82%;animation-delay:2s"></div>
+     style="left:65%;animation-delay:7s">
+</div>
 
 <div class="petal-float"
-     style="left:92%;animation-delay:6s"></div>
+     style="left:82%;animation-delay:2s">
+</div>
+
+<div class="petal-float"
+     style="left:92%;animation-delay:6s">
+</div>
 
 
 <!-- =========================
@@ -1731,7 +1444,9 @@ body{
     </div>
 
 
-    <!-- CARTA -->
+    <!-- =========================
+         CARTA
+    ========================= -->
 
     <section class="letter">
 
@@ -1876,8 +1591,119 @@ function sendHearts(){
 
 }
 
+
+/* =========================================================
+   AJUSTAR RAMO AUTOMÁTICAMENTE AL ANCHO DEL CELULAR
+========================================================= */
+
+function ajustarRamo(){
+
+    const ramo =
+        document.querySelector(".bouquet");
+
+    if(!ramo) return;
+
+
+    const ancho =
+        document.documentElement.clientWidth;
+
+
+    /*
+     * El ramo original mide 540px.
+     *
+     * Dejamos 10px libres a cada lado.
+     */
+
+    let escala =
+        (ancho - 20) / 540;
+
+
+    /*
+     * En pantallas grandes no lo hacemos
+     * más grande que su tamaño original.
+     */
+
+    escala =
+        Math.min(1, escala);
+
+
+    /*
+     * Evita que en celulares extremadamente
+     * pequeños desaparezca demasiado.
+     */
+
+    escala =
+        Math.max(.48, escala);
+
+
+    /*
+     * Guardamos la escala.
+     */
+
+    ramo.style.setProperty(
+        "--ramo-scale",
+        escala
+    );
+
+
+    /*
+     * Calculamos cuánto espacio debe liberar
+     * el ramo después de reducirse.
+     */
+
+    const alturaOriginal =
+        690;
+
+    const alturaReal =
+        alturaOriginal * escala;
+
+
+    const margen =
+        alturaReal - alturaOriginal;
+
+
+    ramo.style.setProperty(
+        "--ramo-margin",
+        margen + "px"
+    );
+
+}
+
+
+/* =========================
+   INICIAL
+========================= */
+
+ajustarRamo();
+
+
+/* =========================
+   REDIMENSIONAR
+========================= */
+
+window.addEventListener(
+    "resize",
+    ajustarRamo
+);
+
+
+/* =========================
+   GIRAR CELULAR
+========================= */
+
+window.addEventListener(
+    "orientationchange",
+    function(){
+
+        setTimeout(
+            ajustarRamo,
+            200
+        );
+
+    }
+);
+
 </script>
 
 </body>
 </html>
-
